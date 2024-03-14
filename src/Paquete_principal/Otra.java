@@ -18,4 +18,14 @@ public class Otra extends Numeros{
             return 0;
         }
     }
+    
+    public double Menor(){
+        if(this.a < this.b){
+            return this.a;
+        }else if( this.a > this.b){
+            return this.b;
+        }else {
+            return 0;
+        }
+    }
 }
