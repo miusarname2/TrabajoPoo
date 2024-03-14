@@ -16,6 +16,11 @@ public class Distintas extends Operaciones{
         
         temp_vard = Temp_obj.Mayor();
         
+        Temp_obj.setA(this.a);
+        Temp_obj.setB(this.b);
+        
+        temp_vard = Temp_obj.Mayor();
+        
         if(temp_vard != 0){
             this.setValor(Double.toString(temp_vard));
             if(this.esPar()){
@@ -31,6 +36,9 @@ public class Distintas extends Operaciones{
         double temp_vard;
         
         Otra Temp_obj = new Otra();
+        
+        Temp_obj.setA(this.a);
+        Temp_obj.setB(this.b);
         
         temp_vard = Temp_obj.Mayor();
         

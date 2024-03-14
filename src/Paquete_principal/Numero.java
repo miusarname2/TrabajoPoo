@@ -4,6 +4,8 @@
  */
 package Paquete_principal;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sergi
@@ -61,9 +63,9 @@ public class Numero extends javax.swing.JFrame {
 
         jLabel2.setText("IDENTIFICACION");
 
-        Name.setForeground(new java.awt.Color(255, 255, 255));
+        Name.setForeground(new java.awt.Color(51, 51, 51));
 
-        Identity.setForeground(new java.awt.Color(255, 255, 255));
+        Identity.setForeground(new java.awt.Color(51, 51, 51));
 
         Show.setText("aqui hay un label");
 
@@ -71,12 +73,14 @@ public class Numero extends javax.swing.JFrame {
 
         jLabel5.setText("B");
 
+        a.setForeground(new java.awt.Color(51, 51, 51));
         a.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aActionPerformed(evt);
             }
         });
 
+        b.setForeground(new java.awt.Color(51, 51, 51));
         b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bActionPerformed(evt);
@@ -126,6 +130,11 @@ public class Numero extends javax.swing.JFrame {
         });
 
         jButton7.setText("AREA TRAPECIO");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Paquete_principal/xd.jpg"))); // NOI18N
         jLabel6.setText("jLabel6");
@@ -193,9 +202,9 @@ public class Numero extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(Identity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(a, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -232,6 +241,23 @@ public class Numero extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        boolean resultA,resultB;
+        double handler;
+        
+        Operaciones Obj = new Operaciones();
+        
+       Obj.setValor(a.getText());
+       resultA = Obj.esNumero();
+       Obj.setValor(b.getText());
+       resultB = Obj.esNumero();
+        if(resultA && resultB){
+           Obj.setA(Double.parseDouble(a.getText()));
+           Obj.setB(Double.parseDouble(b.getText()));
+           handler= Obj.areaRectangulo();
+           Show.setText(Double.toString(handler));
+        }else{
+           Show.setText("Alguno(s) de los valores no son validos");
+       }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aActionPerformed
@@ -246,7 +272,7 @@ public class Numero extends javax.swing.JFrame {
         // TODO add your handling code here:
         String first;
         
-        first = Name.getText()+Identity.getText()+"\n"+a.getText() + b.getText();
+        first = Name.getText()+"-"+Identity.getText()+"-"+a.getText()+"-" + b.getText();
         
         Show.setText(first);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -267,10 +293,11 @@ public class Numero extends javax.swing.JFrame {
            Obj.setA(Double.parseDouble(a.getText()));
            Obj.setB(Double.parseDouble(b.getText()));
            handler = Obj.mayorPar();
-           if(handler == 0){
-                Show.setText("Alguno(s) de los valores no son validos, es decir o no son pares  o no hay numero mayor");
+           if(handler == 0.0){
+                JOptionPane.showMessageDialog(rootPane, "Alguno(s) de los valores no son validos, es decir o no son pares  o no hay numero mayor");
+           }else{
+                Show.setText(Double.toString(handler));   
            }
-            Show.setText(Double.toString(handler));
        }else{
            Show.setText("Alguno(s) de los valores no son validos");
        }
@@ -293,9 +320,10 @@ public class Numero extends javax.swing.JFrame {
            Obj.setB(Double.parseDouble(b.getText()));
            handler = Obj.mayorImpart();
            if(handler == 0){
-                Show.setText("Alguno(s) de los valores no son validos, es decir o son pares  o no hay numero mayor");
+                JOptionPane.showMessageDialog(rootPane, "Alguno(s) de los valores no son validos, es decir o son pares  o no hay numero mayor");
+           }else{
+               Show.setText(Double.toString(handler));
            }
-            Show.setText(Double.toString(handler));
        }else{
            Show.setText("Alguno(s) de los valores no son validos");
        }
@@ -327,7 +355,48 @@ public class Numero extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        boolean resultA,resultB;
+        double handler;
+        
+        Otra Obj = new Otra();
+        
+       Obj.setValor(a.getText());
+       resultA = Obj.esNumero();
+       Obj.setValor(b.getText());
+       resultB = Obj.esNumero();
+        if(resultA && resultB){
+           Obj.setA(Double.parseDouble(a.getText()));
+           Obj.setB(Double.parseDouble(b.getText()));
+           handler= Obj.Menor();
+           if(handler == 0){
+                Show.setText("Alguno(s) de los valores no son validos, es decir no son numero mayor");
+           }
+            Show.setText(Double.toString(handler));
+        }else{
+           Show.setText("Alguno(s) de los valores no son validos");
+       }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        boolean resultA,resultB;
+        double handler;
+        
+        Operaciones Obj = new Operaciones();
+        
+       Obj.setValor(a.getText());
+       resultA = Obj.esNumero();
+       Obj.setValor(b.getText());
+       resultB = Obj.esNumero();
+        if(resultA && resultB){
+           Obj.setA(Double.parseDouble(a.getText()));
+           Obj.setB(Double.parseDouble(b.getText()));
+           handler= Obj.areaTrapecio();
+           Show.setText(Double.toString(handler));
+        }else{
+           Show.setText("Alguno(s) de los valores no son validos");
+       }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
