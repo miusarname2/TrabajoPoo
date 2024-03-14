@@ -98,10 +98,25 @@ public class Numero extends javax.swing.JFrame {
         });
 
         jButton3.setText("MAYOR IMPAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("MAYOR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("MENOR");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("AREA RECTANGULO");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -238,11 +253,81 @@ public class Numero extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        boolean resultA,resultB;
+        double handler;
+        
         Distintas Obj = new Distintas();
         
-        Obj.setA(Double.parseDouble(a.getText()));
-        Obj.setB(Double.parseDouble(b.getText()));
+        Obj.setValor(a.getText());
+        resultA = Obj.esNumero();
+       Obj.setValor(b.getText());
+       resultB = Obj.esNumero();
+       
+       if(resultA && resultB){
+           Obj.setA(Double.parseDouble(a.getText()));
+           Obj.setB(Double.parseDouble(b.getText()));
+           handler = Obj.mayorPar();
+           if(handler == 0){
+                Show.setText("Alguno(s) de los valores no son validos, es decir o no son pares  o no hay numero mayor");
+           }
+            Show.setText(Double.toString(handler));
+       }else{
+           Show.setText("Alguno(s) de los valores no son validos");
+       }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        boolean resultA,resultB;
+        double handler;
+        
+        Distintas Obj = new Distintas();
+        
+        Obj.setValor(a.getText());
+        resultA = Obj.esNumero();
+       Obj.setValor(b.getText());
+       resultB = Obj.esNumero();
+       
+       if(resultA && resultB){
+           Obj.setA(Double.parseDouble(a.getText()));
+           Obj.setB(Double.parseDouble(b.getText()));
+           handler = Obj.mayorImpart();
+           if(handler == 0){
+                Show.setText("Alguno(s) de los valores no son validos, es decir o son pares  o no hay numero mayor");
+           }
+            Show.setText(Double.toString(handler));
+       }else{
+           Show.setText("Alguno(s) de los valores no son validos");
+       }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        boolean resultA,resultB;
+        double handler;
+        
+        Otra Obj = new Otra();
+        
+       Obj.setValor(a.getText());
+       resultA = Obj.esNumero();
+       Obj.setValor(b.getText());
+       resultB = Obj.esNumero();
+        if(resultA && resultB){
+           Obj.setA(Double.parseDouble(a.getText()));
+           Obj.setB(Double.parseDouble(b.getText()));
+           handler= Obj.Mayor();
+           if(handler == 0){
+                Show.setText("Alguno(s) de los valores no son validos, es decir no son numero mayor");
+           }
+            Show.setText(Double.toString(handler));
+        }else{
+           Show.setText("Alguno(s) de los valores no son validos");
+       }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

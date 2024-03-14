@@ -27,7 +27,7 @@ public class Distintas extends Operaciones{
      return 0;   
     }
     
-    public double menorPar(){
+    public double mayorImpart(){
         double temp_vard;
         
         Otra Temp_obj = new Otra();
